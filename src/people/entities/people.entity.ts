@@ -14,7 +14,6 @@ import { Address } from './address.entity';
 import { ImportantDate } from './important-date.entity';
 import { SocialNetwork } from 'src/people/entities/social-network.entity';
 
-
 @Entity('people')
 export class People {
   @ApiProperty({
@@ -87,6 +86,7 @@ export class People {
   @OneToMany(() => SocialNetwork, (socialNetworks) => socialNetworks.people, {
     cascade: true,
     eager: true,
+    nullable: true,
   })
   socialNetworks: SocialNetwork[];
 
@@ -121,6 +121,4 @@ export class People {
   })
   @UpdateDateColumn()
   updatedAt: Date;
-
-
 }

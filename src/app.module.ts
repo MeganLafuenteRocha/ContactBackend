@@ -8,6 +8,8 @@ import { SeedModule } from './seed/seed.module';
 import { FilesModule } from './files/files.module';
 import { AuthModule } from './auth/auth.module';
 import { PeopleModule } from './people/people.module';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 @Module({
   imports: [
@@ -37,5 +39,7 @@ import { PeopleModule } from './people/people.module';
     AuthModule,
     PeopleModule,
   ],
+  controllers: [AppController], 
+  providers: [AppService], 
 })
 export class AppModule {}

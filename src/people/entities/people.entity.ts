@@ -12,6 +12,7 @@ import { User } from '../../auth/entities/user.entity';
 import { Contact } from './contact.entity';
 import { Address } from './address.entity';
 import { ImportantDate } from './important-date.entity';
+import { SocialNetwork } from 'src/people/entities/social-network.entity';
 
 @Entity('people')
 export class People {
@@ -81,6 +82,13 @@ export class People {
     eager: true,
   })
   importantDates: ImportantDate[];
+
+  @OneToMany(() => SocialNetwork, (socialNetworks) => socialNetworks.people, {
+    cascade: true,
+    eager: true,
+    nullable: true,
+  })
+  socialNetworks: SocialNetwork[];
 
   @ApiHideProperty()
   @ManyToOne(() => User, (user) => user.people, { eager: true })

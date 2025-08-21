@@ -8,8 +8,6 @@ import { SeedModule } from './seed/seed.module';
 import { FilesModule } from './files/files.module';
 import { AuthModule } from './auth/auth.module';
 import { PeopleModule } from './people/people.module';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 
 @Module({
   imports: [
@@ -24,6 +22,7 @@ import { AppService } from './app.service';
       password: process.env.DB_PASSWORD,
       autoLoadEntities: true,
       synchronize: true,
+      logging: true,
     }),
 
     ServeStaticModule.forRoot({
@@ -39,7 +38,5 @@ import { AppService } from './app.service';
     AuthModule,
     PeopleModule,
   ],
-  controllers: [AppController], 
-  providers: [AppService], 
 })
 export class AppModule {}

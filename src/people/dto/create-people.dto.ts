@@ -12,8 +12,6 @@ import {
   MinLength,
 } from 'class-validator';
 import { Type } from 'class-transformer';
-import { socialNetworksData } from 'src/seed/social-networks.seed';
-import { CreateSocialNetworkDto } from './create-social-network.dto';
 
 export class CreateContactDto {
   @ApiProperty({
@@ -220,7 +218,6 @@ export class CreatePeopleDto {
       },
     ],
   })
-  
   @IsOptional()
   @IsArray()
   @ValidateNested({ each: true })
@@ -247,34 +244,9 @@ export class CreatePeopleDto {
       },
     ],
   })
-
   @IsOptional()
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => CreateImportantDateDto)
   importantDates?: CreateImportantDateDto[];
-
-    @ApiProperty({
-    description:
-      'Array of contact phone numbers (optional). You can add multiple phone numbers with different tags.',
-    type: [CreateSocialNetworkDto],
-    required: false,
-    example: [
-      {
-        callCode: '+591',
-        number: '12345678',
-        tag: 'mobile',
-      },
-      {
-        callCode: '+591',
-        number: '87654321',
-        tag: 'work',
-      },
-    ],
-  })
-  @IsOptional()
-  @IsArray()
-  @ValidateNested({ each: true })
-  @Type(() => CreateSocialNetworkDto)
-  socialNetworks?: CreateSocialNetworkDto[];
 }

@@ -18,14 +18,13 @@ export class SocialNetwork {
     description: 'Social Network ID',
     uniqueItems: true,
   })
-  
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => People, (people) => people.socialNetworks, {
-    onDelete: 'CASCADE',
-  })
-  people: People;
+  // @ManyToOne(() => People, (people) => people.socialNetworks, {
+  //   onDelete: 'CASCADE',
+  // })
+  // people: People;
 
   @ApiProperty({
     example: 'Facebook',
@@ -60,5 +59,4 @@ export class SocialNetwork {
 
   @UpdateDateColumn()
   updatedAt: Date;
-
 }
